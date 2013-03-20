@@ -41,6 +41,7 @@
 				<string>Discovering hosts...</string>
 				<key>script</key>
 				<string>#!/bin/bash
+shopt -s nocasematch
 
 query="{query}"
 
