@@ -48,7 +48,7 @@ query="{query}"
 HOSTNAME=`hostname`
 
 function escape_hostname {
-    echo $(echo "$@" | sed 's/[^a-zA-Z0-9 -_]//g;s/ _/-/g')
+    echo $(echo "$@" | sed 's/[^a-zA-Z0-9 -_]//g;s/[ _]/-/g')
 }
 
 trap '{
