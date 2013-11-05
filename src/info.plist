@@ -45,7 +45,7 @@ shopt -s nocasematch
 
 query="{query}"
 
-HOSTNAME=`hostname`
+HOSTNAME=`hostname -s`
 
 function escape_hostname {
     echo $(echo "$@" | sed 's/[^a-zA-Z0-9 -_]//g;s/[ _]/-/g')
@@ -73,7 +73,7 @@ while read -r line; do
     domain="${domain%?}"
     hostname="$(escape_hostname $name).$domain"
 
-    if [[ "$hostname" != "$HOSTNAME" &amp;&amp; ( -z "$query" || $name =~ "$query" ) ]]; then
+    if [[ "$name" != "$HOSTNAME" &amp;&amp; ( -z "$query" || $name =~ "$query" ) ]]; then
         out+="&lt;item arg=\"$hostname\" uid=\"$hostname\" valid=\"yes\"&gt;\
                 &lt;title&gt;$name&lt;/title&gt;\
                 &lt;subtitle&gt;Connect to $hostname&lt;/subtitle&gt;\
@@ -102,6 +102,8 @@ exit 0</string>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>A57B8333-3625-4FFD-9C83-D2902C2416CE</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -119,6 +121,8 @@ end alfred_script</string>
 			<string>alfred.workflow.action.applescript</string>
 			<key>uid</key>
 			<string>F058E73F-667D-4A00-9616-33FE0EF6E358</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
