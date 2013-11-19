@@ -81,9 +81,9 @@ while read -r line; do
             &lt;/item&gt;"
     fi
 
-    if [ $(echo $line | cut -d ' ' -f 3) -ne '3' ]; then break; fi # break if no more items will follow
+    if (( $(echo $line | cut -d ' ' -f 3) &lt; 2 )); then break; fi # break if no more items will follow
 
-done &lt; &lt;((sleep 0.5; kill -13 0) &amp; # kill quickly if trapped
+done &lt; &lt;((sleep 1; kill -13 0) &amp; # kill quickly if trapped
             dns-sd -B _rfb._tcp)
 
 # silently kill subprocess
